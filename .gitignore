@@ -1,32 +1,84 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
+# ASP.NET & Visual Studio files
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.vscode/
+*_i.c
+*_p.c
+*.pidb
+*.log
+*.iobj
+*.pdb
+*.ipch/
+obj/
+bin/
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
 *.exe
-*.out
-*.app
+*.log
+*.csv
+*.tmp
+*.zip
+*.bak
+*.cache
+*.log
+*.vspscc
+*.vssscc
+*_vti_cnf/
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.psess
+*.rdl.data
+*.scc
+*.tlb
+*.tlh
+*.bak
+*.bak.*
+*.metaproj
+*.deployment
+*.bin*
+*.Publish.xml
+*.pubxml
+*.publishproj
+*.obj
+*.cache
+*.sqlsuo
+*.cd
+*.cdx
+*.ldf
+*.mdf
+*.ls
+*.ls.*
+
+# Visual Studio Code
+.vscode/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
