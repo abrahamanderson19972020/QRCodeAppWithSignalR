@@ -39,6 +39,10 @@ namespace Business.Concrete
             return _productDal.GetListAll();
         }
 
+        public List<Product> TGetProductsWithCategoryName()
+        {
+            return _productDal.GetProductsWithCategoryName();
+        }
 
         public void TUpdate(Product entity)
         {

@@ -12,7 +12,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=SignalRDatabase;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=SignalRDatabase;Trusted_Connection=true", b => b.MigrationsAssembly("SignalRAPI"));
         }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Booking> Bookings { get; set; }
