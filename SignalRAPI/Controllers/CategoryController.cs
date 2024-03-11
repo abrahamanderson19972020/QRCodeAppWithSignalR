@@ -42,7 +42,7 @@ namespace SignalRAPI.Controllers
             return NotFound(ErrorMessages<Category>.NoItemFound + "with id= " + id);
         }
         [HttpPost("addnewcategory")]
-        public ActionResult AddNewCategory(CreateCategoryDto createCategoryDto)
+        public ActionResult<CategoryGeneralResponseDto> AddNewCategory(CreateCategoryDto createCategoryDto)
         {
             Category newCategory = new Category()
             {
@@ -50,10 +50,15 @@ namespace SignalRAPI.Controllers
                 Status = createCategoryDto.Status,
             };
             _categoryService.TAdd(newCategory);
-            return Ok(SucccessMessages<Category>.ItemAdded);
+            CategoryGeneralResponseDto responseDto = new CategoryGeneralResponseDto()
+            {
+                Item = newCategory,
+                Message = SucccessMessages<Category>.ItemAdded
+            };
+            return Ok(responseDto);
         }
         [HttpPut("update")]
-        public ActionResult UpdateCategory(UpdateCategoryDto updateCategoryDto)
+        public ActionResult<CategoryGeneralResponseDto> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
             var categoryToUpdate = _categoryService.TGetByID(updateCategoryDto.CategoryID);
             if(categoryToUpdate != null)
@@ -61,20 +66,36 @@ namespace SignalRAPI.Controllers
                 categoryToUpdate.Status = updateCategoryDto.Status;
                 categoryToUpdate.CategoryName = updateCategoryDto.CategoryName;
                 _categoryService.TUpdate(categoryToUpdate);
-                return Ok(SucccessMessages<Category>.ItemUpdated);
+                CategoryGeneralResponseDto responseDto = new CategoryGeneralResponseDto()
+                {
+                    Item = new Category()
+                    {
+                        CategoryID = categoryToUpdate.CategoryID,
+                        Status = updateCategoryDto.Status,
+                        CategoryName = categoryToUpdate.CategoryName,
+                        Products = categoryToUpdate.Products
+                    },
+                    Message = SucccessMessages<Category>.ItemUpdated
+                };
+                return Ok(responseDto);
             }
             return NotFound(ErrorMessages<Category>.NoItemFound + " with id= " + updateCategoryDto.CategoryID);
         }
         [HttpDelete("delete/{id}")]
-        public ActionResult DeleteCategory(int categoryID)
+        public ActionResult DeleteCategory(int id)
         {
-            var categoryToDelete = _categoryService.TGetByID(categoryID);
+            var categoryToDelete = _categoryService.TGetByID(id);
             if(categoryToDelete != null )
             {
                 _categoryService.TDelete(categoryToDelete);
-                return Ok(SucccessMessages<Category>.ItemDeleted);
+                CategoryGeneralResponseDto responseDto = new CategoryGeneralResponseDto()
+                {
+                    Item = categoryToDelete,
+                    Message = SucccessMessages<Category>.ItemDeleted
+                };
+                return Ok(responseDto);
             }
-            return NotFound(ErrorMessages<Category>.NoItemFound + " with id= " + categoryID);
+            return NotFound(ErrorMessages<Category>.NoItemFound + " with id= " + id);
         }
     }
 }

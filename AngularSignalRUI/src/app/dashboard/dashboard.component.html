@@ -3,13 +3,13 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-warning">
+          <div class="card-header card-header-danger">
             <h4 class="card-title">Categories</h4>
             <p class="card-category">You may make Category operations here</p>
           </div>
           <div class="card-body table-responsive">
             <table class="table table-hover">
-              <thead class="text-warning">
+              <thead class="text-danger">
                 <th>ID</th>
                 <th>Name</th>
                 <th>Status</th>
@@ -22,10 +22,20 @@
                   <td>{{ category.categoryName }}</td>
                   <td>{{ category.status }}</td>
                   <td>
-                    <button class="btn btn-outline-success">Update</button>
+                    <button
+                      class="btn btn-outline-success"
+                      (click)="updateCategoryInfo(category)"
+                    >
+                      Update
+                    </button>
                   </td>
                   <td>
-                    <button class="btn btn-outline-danger">Delete</button>
+                    <button
+                      class="btn btn-outline-danger"
+                      (click)="deleteCategory(category)"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
                 <a
@@ -51,11 +61,14 @@
           style="
             position: absolute;
             top: 41px;
-            left: -231px;
+            left: -131px;
             will-change: top, left;
+            border: 2px solid #f44336;
           "
         >
-          <li class="header-title">Add New Category</li>
+          <li class="header-title text-danger">
+            {{ userActionText$ | async }} Category
+          </li>
           <li class="button-container">
             <div>
               <form *ngIf="categoryAddForm" [formGroup]="categoryAddForm">
@@ -63,22 +76,45 @@
                   class="btn btn-outline btn-block btn-fill"
                   data-toggle="modal"
                   data-target="#buy"
-                  placeholder="write Category Name"
+                  placeholder="Enter Category Name"
                   formControlName="categoryName"
+                  minlength="2"
+                  style="border: 1px solid #46b8da"
                 />
+                <mat-error
+                  *ngIf="
+                    categoryAddForm.get('categoryName').errors?.required &&
+                    categoryAddForm.get('categoryName').touched &&
+                    !categoryAddForm.get('categoryName').pristine
+                  "
+                  >Field is required</mat-error
+                >
               </form>
             </div>
           </li>
           <li class="button-container">
-            <div>
-              <button
-                class="btn btn-info btn-block btn-fill"
-                data-toggle="modal"
-                data-target="#buy"
-                (click)="addNewCategory()"
-              >
-                ADD CATEGORY
-              </button>
+            <div class="row">
+              <div class="col-md-6">
+                <button
+                  class="btn btn-info btn-block btn-fill"
+                  data-toggle="modal"
+                  data-target="#buy"
+                  (click)="addNewCategory()"
+                  [disabled]="!categoryAddForm?.valid"
+                >
+                  {{ userActionText$ | async }}
+                </button>
+              </div>
+              <div class="col-md-6">
+                <button
+                  class="btn btn-info btn-block btn-fill"
+                  data-toggle="modal"
+                  data-target="#buy"
+                  (click)="cancelNewCategory()"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </li>
         </ul>
