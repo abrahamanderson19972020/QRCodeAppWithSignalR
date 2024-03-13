@@ -71,7 +71,7 @@ namespace SignalRAPI.Controllers
         }
 
         [HttpPost("addnewproduct")]
-        public ActionResult AddNewProduct(CreateProductDto createProductDto)
+        public ActionResult<GeneralProductResponseDto> AddNewProduct(CreateProductDto createProductDto)
         {
             Product productToAdd = new Product()
             {
@@ -83,11 +83,16 @@ namespace SignalRAPI.Controllers
                 ProductStatus = createProductDto.ProductStatus
             };
             _productService.TAdd(productToAdd);
-            return Ok(SucccessMessages<Product>.ItemAdded);
+            GeneralProductResponseDto generalProductResponseDto = new GeneralProductResponseDto()
+            {
+                Item = productToAdd,
+                Message = SucccessMessages<Product>.ItemAdded
+            };
+            return Ok(generalProductResponseDto);
         }
 
         [HttpPut("update")]
-        public ActionResult UpdateProduct(UpdateProductDto updateProductDto)
+        public ActionResult<GeneralProductResponseDto> UpdateProduct(UpdateProductDto updateProductDto)
         {
             var productToUpdate = _productService.TGetByID(updateProductDto.ProductID); 
             if(productToUpdate != null)
@@ -99,17 +104,27 @@ namespace SignalRAPI.Controllers
                 productToUpdate.Description = updateProductDto.Description;
                 productToUpdate.ImageUrl = updateProductDto.ImageUrl;
                 _productService.TUpdate(productToUpdate);
-                return Ok(SucccessMessages<Product>.ItemUpdated);
+                GeneralProductResponseDto generalProductResponseDto = new GeneralProductResponseDto()
+                {
+                    Item = productToUpdate,
+                    Message = SucccessMessages<Product>.ItemUpdated
+                };
+                return Ok(generalProductResponseDto);
             }
             return NotFound(ErrorMessages<Product>.NoItemFound + " with id= " + updateProductDto.ProductID);
         }
         [HttpDelete("delete/{id}")]
-        public ActionResult DeleteProduct(int id)
+        public ActionResult<GeneralProductResponseDto> DeleteProduct(int id)
         {
             var productToDelete = _productService.TGetByID(id);
             if(productToDelete != null ) { 
                 _productService.TDelete(productToDelete);
-                return Ok(SucccessMessages<Product>.ItemDeleted);
+                GeneralProductResponseDto generalProductResponseDto = new GeneralProductResponseDto()
+                {
+                    Item = productToDelete,
+                    Message = SucccessMessages<Product>.ItemDeleted
+                };
+                return Ok(generalProductResponseDto);
             }
             return NotFound(ErrorMessages<Product>.NoItemFound + " with id= " + id);
         }

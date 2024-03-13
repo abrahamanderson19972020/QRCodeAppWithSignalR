@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntitiesLayer.DTOs
 {
-    public class GeneralResponeDto<T> where T : class
+    public class GeneralResponseDto<T> where T : class
     {
         public T Item { get; set; }
         public string Message { get; set; }

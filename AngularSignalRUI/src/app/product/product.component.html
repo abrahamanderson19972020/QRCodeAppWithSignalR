@@ -1,0 +1,125 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">List of Products</h4>
+              <p class="card-category">You may make Product operations here</p>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="table table-hover">
+                <thead class="text-danger">
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of products">
+                    <td>{{ category.categoryID }}</td>
+                    <td>{{ category.categoryName }}</td>
+                    <td>{{ category.status }}</td>
+                    <td>
+                      <button
+                        class="btn btn-outline-success"
+                        (click)="updateCategoryInfo(product)"
+                      >
+                        Update
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        class="btn btn-outline-danger"
+                        (click)="deleteCategory(product)"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                  <a
+                    class="btn btn-outline-primary"
+                    (click)="addCategorySimulator()"
+                    >Add New Product</a
+                  >
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fixed-plugin">
+        <div
+          class="dropdown show-dropdown"
+          [ngClass]="isAddProductClicked ? 'open show' : ''"
+        >
+          <a href="#" data-toggle="dropdown" aria-expanded="true"> </a>
+          <ul
+            class="dropdown-menu show"
+            x-placement="bottom-start"
+            style="
+              position: absolute;
+              top: 41px;
+              left: -131px;
+              will-change: top, left;
+              border: 2px solid #f44336;
+            "
+          >
+            <li class="header-title text-danger">
+              {{ userActionText$ | async }} Product
+            </li>
+            <li class="button-container">
+              <div>
+                <form *ngIf="productAddForm" [formGroup]="productAddForm">
+                  <input
+                    class="btn btn-outline btn-block btn-fill"
+                    data-toggle="modal"
+                    data-target="#buy"
+                    placeholder="Enter Category Name"
+                    formControlName="categoryName"
+                    minlength="2"
+                    style="border: 1px solid #46b8da"
+                  />
+                  <mat-error
+                    *ngIf="
+                      categoryAddForm.get('categoryName').errors?.required &&
+                      categoryAddForm.get('categoryName').touched &&
+                      !categoryAddForm.get('categoryName').pristine
+                    "
+                    >Field is required</mat-error
+                  >
+                </form>
+              </div>
+            </li>
+            <li class="button-container">
+              <div class="row">
+                <div class="col-md-6">
+                  <button
+                    class="btn btn-info btn-block btn-fill"
+                    data-toggle="modal"
+                    data-target="#buy"
+                    (click)="addNewCategory()"
+                    [disabled]="!productAddForm?.valid"
+                  >
+                    {{ userActionText$ | async }}
+                  </button>
+                </div>
+                <div class="col-md-6">
+                  <button
+                    class="btn btn-info btn-block btn-fill"
+                    data-toggle="modal"
+                    data-target="#buy"
+                    (click)="cancelNewProduct()"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  

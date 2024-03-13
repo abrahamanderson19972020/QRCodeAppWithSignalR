@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { CategoryResult } from "./../models/category/categoryResult.model";
+import { CategoryResult } from "../models/category/categoryResult.model";
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { CategoryService } from "app/services/category.service";
 import * as Chartist from "chartist";
@@ -9,10 +9,10 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-dashboard",
-  templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.css"],
+  templateUrl: "./category.component.html",
+  styleUrls: ["./category.component.css"],
 })
-export class DashboardComponent implements OnInit {
+export class CategoryComponent implements OnInit {
   categories: CategoryResult[] = [];
   isAddCategoryClicked: boolean = false;
   categoryAddForm: FormGroup | undefined;

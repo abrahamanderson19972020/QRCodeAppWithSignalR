@@ -1,10 +1,10 @@
 import { Routes } from "@angular/router";
 
-import { DashboardComponent } from "../../dashboard/dashboard.component";
+import { CategoryComponent } from "../../category/category.component";
 import { UserProfileComponent } from "../../user-profile/user-profile.component";
 import { TableListComponent } from "../../table-list/table-list.component";
 import { TypographyComponent } from "../../typography/typography.component";
-import { IconsComponent } from "../../icons/icons.component";
+import { ProductComponent } from "../../product/product.component";
 import { MapsComponent } from "../../maps/maps.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
 import { UpgradeComponent } from "../../upgrade/upgrade.component";
@@ -52,11 +52,11 @@ export const AdminLayoutRoutes: Routes = [
   //         component: UpgradeComponent
   //     }]
   // }
-  { path: "dashboard", component: DashboardComponent },
+  { path: "categories", component: CategoryComponent },
   { path: "about", component: UserProfileComponent },
   { path: "menu", component: TableListComponent },
-  { path: "categories", component: TypographyComponent },
-  { path: "products", component: IconsComponent },
+  { path: "socialmedia", component: TypographyComponent },
+  { path: "products", component: ProductComponent },
   { path: "messages", component: MapsComponent },
   { path: "rezervations", component: NotificationsComponent },
 ];

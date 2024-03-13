@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntitiesLayer.DTOs.CategoryDto
+namespace EntitiesLayer.DTOs.ProductDto
 {
-    public class CategoryGeneralResponseDto:GeneralResponseDto<Category>
+    public class GeneralProductResponseDto:GeneralResponseDto<Product>
     {
     }
 }

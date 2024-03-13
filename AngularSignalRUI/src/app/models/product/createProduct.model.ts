@@ -1,5 +1,4 @@
-export interface Product {
-  productID: number;
+export interface CreateProduct {
   productName: string;
   description: string;
   price: number;

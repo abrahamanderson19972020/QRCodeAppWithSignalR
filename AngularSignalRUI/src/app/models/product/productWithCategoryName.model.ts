@@ -1,9 +1,9 @@
-export interface Product {
+export interface ProductWithCategoryName {
   productID: number;
   productName: string;
   description: string;
   price: number;
   imageUrl: string;
   productStatus: boolean;
-  categoryID: number;
+  categoryName: string;
 }
