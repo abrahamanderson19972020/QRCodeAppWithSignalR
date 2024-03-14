@@ -11,21 +11,14 @@ import { BehaviorSubject, Observable } from "rxjs";
 })
 export class ProductService {
   baseUrl: string = "https://localhost:7193/api/Product/";
-  private userActionButtonText: BehaviorSubject<string> =
-    new BehaviorSubject<string>("");
-  private userActionButtonText$ = this.userActionButtonText.asObservable();
 
   constructor(private httpClient: HttpClient) {}
 
-  getUserActionText(): Observable<string> {
-    return this.userActionButtonText$;
+  getAllProducst(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.baseUrl + "getallproducts");
   }
 
-  setUserActionText(value: string) {
-    this.userActionButtonText.next(value);
-  }
-
-  getAllCategories(): Observable<ProductWithCategoryName[]> {
+  getAllProductsWithCategories(): Observable<ProductWithCategoryName[]> {
     return this.httpClient.get<ProductWithCategoryName[]>(
       this.baseUrl + "getproductswithcategoryname"
     );

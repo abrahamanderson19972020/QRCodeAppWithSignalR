@@ -1,0 +1,28 @@
+<mat-card class="product-card" *ngIf="product">
+  <mat-card-header>
+    <mat-card-title> {{ product.productName | titlecase }}</mat-card-title>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="
+      product.imageUrl ? product.imageUrl : 'https://picsum.photos/200/300'
+    "
+    alt="Photo of a Shiba Inu"
+  />
+  <mat-card-content>
+    <span>
+      <strong>Price:</strong>
+      {{ product.price | currency : "USD" }}
+    </span>
+    <span>
+      <strong>Description:</strong>
+      {{ product.description }}
+    </span>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="addCart(product)">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+    <button mat-button><mat-icon>favorite</mat-icon></button>
+  </mat-card-actions>
+</mat-card>

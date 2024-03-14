@@ -8,7 +8,7 @@ import { UserProfileComponent } from "../../user-profile/user-profile.component"
 import { TableListComponent } from "../../table-list/table-list.component";
 import { TypographyComponent } from "../../typography/typography.component";
 import { ProductComponent } from "../../product/product.component";
-import { MapsComponent } from "../../maps/maps.component";
+import { ProductDetailComponent } from "../../product-detail/product-detail.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
 import { UpgradeComponent } from "../../upgrade/upgrade.component";
 import { MatButtonModule } from "@angular/material/button";
@@ -18,6 +18,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MaterialModule } from "app/shared/material.module";
 
 @NgModule({
   imports: [
@@ -25,13 +26,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule,
-    MatSnackBarModule,
+    MaterialModule,
   ],
   declarations: [
     CategoryComponent,
@@ -39,7 +34,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     TableListComponent,
     TypographyComponent,
     ProductComponent,
-    MapsComponent,
+    ProductDetailComponent,
     NotificationsComponent,
     UpgradeComponent,
   ],
