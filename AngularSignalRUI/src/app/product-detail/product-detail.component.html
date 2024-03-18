@@ -23,6 +23,22 @@
     <button mat-button (click)="addCart(product)">
       <mat-icon>add_shopping_cart</mat-icon>
     </button>
+    <button
+      mat-button
+      color="primary"
+      class="update-button"
+      (click)="updateProduct(product)"
+    >
+      Update
+    </button>
+    <button
+      mat-button
+      color="warn"
+      class="delete-button"
+      (click)="deleteProduct(product)"
+    >
+      Delete
+    </button>
     <button mat-button><mat-icon>favorite</mat-icon></button>
   </mat-card-actions>
 </mat-card>

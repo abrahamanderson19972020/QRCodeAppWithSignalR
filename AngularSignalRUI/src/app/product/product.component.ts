@@ -29,4 +29,7 @@ export class ProductComponent implements OnInit {
       console.log(this.products);
     });
   }
+  getProductChange(event:boolean){
+      this.getProducts();
+  }
 }

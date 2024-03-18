@@ -25,3 +25,12 @@ mat-card-content {
 mat-card-image {
   width: 300px;
 }
+.update-button:hover {
+  color: blueviolet;
+
+  font-size: large;
+}
+.delete-button:hover {
+  color: blueviolet;
+  font-size: large;
+}

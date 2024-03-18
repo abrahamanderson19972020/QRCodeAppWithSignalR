@@ -1,11 +1,20 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
+      <button
+        class="btn btn-info btn-block btn-fill"
+        routerLink="/products/product-add"
+      >
+        Add New Product
+      </button>
       <div
-        class="col-sm-6 col-md-4 col-lg-3 product-card-container"
+        class="col-sm-6 col-lg-4 col-xl-3 col-xxl-2 product-card-container"
         *ngFor="let product of products"
       >
-        <app-product-detail [product]="product"></app-product-detail>
+        <app-product-detail
+          [product]="product"
+          (changeProduct)="getProductChange($event)"
+        ></app-product-detail>
       </div>
     </div>
   </div>

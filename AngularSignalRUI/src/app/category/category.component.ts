@@ -86,7 +86,6 @@ export class CategoryComponent implements OnInit {
   deleteCategory(category: CategoryResult) {
     this.categoryService.deleteCategory(category.categoryID).subscribe(
       (res) => {
-        console.log(res);
         this.snackBar.open(res.message, "Delete Category", {
           duration: 3000,
         });
